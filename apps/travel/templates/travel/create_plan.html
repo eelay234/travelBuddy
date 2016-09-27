@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <title>Home Page</title>
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+   {% load staticfiles %}
+   <link rel="stylesheet" href="{% static 'travel/css/styles.css' %}">
+</head>
+<body>
+  <nav class="navbar navbar-default">
+    <div class="container">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="/show_dashboard">Home</a></li>
+        <li><a href="/logoff">Log Off</a></li>
+      </ul>
+    </div>
+  </nav>
+<div class="main">
+  <div class="container">
+    <h1>Add a Trip</h1>
+    {% if messages %}
+          <div class="show_errors">
+              <ul>
+              {% for msg in messages %}
+                      <li>{{msg.message}}</li>
+              {% endfor %}
+              </ul>
+          </div>
+    {% endif %}
+     <form action='/create' method='POST'>
+       {% csrf_token %}
+       <table>
+       <tr><td>Destination:</td><td><input type="text" name="destination"></td></tr>
+       <tr><td>Description:</td><td><input type="text" name="description"></td></tr>
+       <tr><td>Travel Date From:</td><td> <input type="date" name="from_date" value=""></td></tr>
+       <tr><td>Travel Date To:</td><td> <input type="date" name="to_date" value=""></td></tr>
+     </table>
+       <input type="submit" value="Add" id="add-btn">
+     </form>
+    </div>
+  </div>
+</body>

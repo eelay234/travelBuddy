@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <title>Home Page</title>
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+   {% load staticfiles %}
+   <link rel="stylesheet" href="{% static 'travel/css/styles.css' %}">
+</head>
+<body>
+  <nav class="navbar navbar-default">
+    <div class="container">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="/show_dashboard">Home</a></li>
+        <li><a href="/logoff">Log Off</a></li>
+      </ul>
+    </div>
+  </nav>
+<div class="main">
+  <div class="container">
+    <h1>{{ trip.destination }}</h1>
+    <p>Planned by: {{ trip.planner }}</p>
+    <p>Description: {{ trip.description }}</p>
+    <p>Travel Date From: {{ trip.from_date }}</p>
+    <p>Travel Date To: {{ trip.to_date }}</p><br>
+    <h4>Other users' joining the trip:</h4>
+    <ul>
+    {% for turist in trip.turists.all %}
+      {% if turist.name != trip.planner.name %}
+        <li>{{ turist.name }}</li>
+      {% endif %}
+    {% endfor %}
+    </ul>
+</div>
+</div>
+</body>

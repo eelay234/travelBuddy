@@ -1,0 +1,21 @@
+#welcome {
+  margin-left: 120px;
+}
+
+td, th {
+  padding: 5px;
+}
+
+th,  td {
+  background-color: #ececec;
+  border-right: solid 1px black;
+}
+
+#add-btn {
+  margin-top: 10px;
+  margin-left: 280px;
+}
+
+#link {
+  margin-left: 450px;
+}
